@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "2365eb4d-caf3-4b37-885d-b244e770bcb5",
+		"name": "Projeto API",
+		"description": "## Abaixo segue a documentação da API Feiras.\n\nCaso seja enviado algum request diferente dos suportados (GET, POST, PUT e DELETE) a API irá retornar o seguinte erro:\n\n``` json\nSTATUS_CODE: 405 Method Not Allowed\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Método não suportado\"\n}\n\n```\n\nCaso ocorrer algum erro no servidor em algum processamento, o seguinte erro será exibido:\n\n``` json\nSTATUS_CODE: 500 Internal Server Error\n{\n    \"codigo\": 500,\n    \"mensagem\": \"Ocorreu um erro interno\"\n}\n\n```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lista Feiras",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost/Projeto_API/api/feiras",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Projeto_API",
+						"api",
+						"feiras"
+					]
+				},
+				"description": "##### Response com resultado:\n\n``` json\nSTATUS_CODE: 200 OK\n[\n    {\n        \"id\": \"1\",\n        \"long\": \"-46550164\",\n        \"lat\": \"-23558733\",\n        \"setcens\": \"355030885000091\",\n        \"areap\": \"3550308005040\",\n        \"coddist\": \"87\",\n        \"distrito\": \"VILA FORMOSA\",\n        \"codsubpref\": \"26\",\n        \"subprefe\": \"ARICANDUVA-FORMOSA-CARRAO\",\n        \"regiao5\": \"Leste\",\n        \"regiao8\": \"Leste 1\",\n        \"nomefeira\": \"VILA FORMOSA\",\n        \"registro\": \"4041-0\",\n        \"logradouro\": \"RUA MARAGOJIPE\",\n        \"numero\": \"S/N\",\n        \"bairro\": \"VL FORMOSA\",\n        \"referencia\": \"TV RUA PRETORIA\"\n    },\n    {\n        \"id\": \"2\",\n        \"long\": \"-46574716\",\n        \"lat\": \"-23584852\",\n        \"setcens\": \"355030893000035\",\n        \"areap\": \"3550308005042\",\n        \"coddist\": \"95\",\n        \"distrito\": \"VILA PRUDENTE\",\n        \"codsubpref\": \"29\",\n        \"subprefe\": \"VILA PRUDENTE\",\n        \"regiao5\": \"Leste\",\n        \"regiao8\": \"Leste 1\",\n        \"nomefeira\": \"PRACA SANTA HELENA\",\n        \"registro\": \"4045-2\",\n        \"logradouro\": \"RUA JOSE DOS REIS\",\n        \"numero\": \"909.000000\",\n        \"bairro\": \"VL ZELINA\",\n        \"referencia\": \"RUA OLIVEIRA GOUVEIA\"\n    }\n]\n\n```\n\n##### Response sem resultado:\n\n``` json\nSTATUS_CODE: 200 OK\n{\n    \"codigo\": 200,\n    \"mensagem\": \"Nenhuma feira cadastrada\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Feiras com Filtro",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost/Projeto_API/api/feiras?campo=bairro&busca=almas",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Projeto_API",
+						"api",
+						"feiras"
+					],
+					"query": [
+						{
+							"key": "campo",
+							"value": "bairro"
+						},
+						{
+							"key": "busca",
+							"value": "almas"
+						}
+					]
+				},
+				"description": "##### Campos disponíveis para busca:\n\n*   DISTRITO\n*   NOMEFEIRA\n*   REGIAO5\n*   BAIRRO\n    \n\n##### Response com resultado:\n\n``` json\nSTATUS_CODE: 200 OK\n[\n    {\n        \"id\": \"1\",\n        \"long\": \"-46550164\",\n        \"lat\": \"-23558733\",\n        \"setcens\": \"355030885000091\",\n        \"areap\": \"3550308005040\",\n        \"coddist\": \"87\",\n        \"distrito\": \"VILA FORMOSA\",\n        \"codsubpref\": \"26\",\n        \"subprefe\": \"ARICANDUVA-FORMOSA-CARRAO\",\n        \"regiao5\": \"Leste\",\n        \"regiao8\": \"Leste 1\",\n        \"nomefeira\": \"VILA FORMOSA\",\n        \"registro\": \"4041-0\",\n        \"logradouro\": \"RUA MARAGOJIPE\",\n        \"numero\": \"S/N\",\n        \"bairro\": \"VL FORMOSA\",\n        \"referencia\": \"TV RUA PRETORIA\"\n    },\n    {\n        \"id\": \"2\",\n        \"long\": \"-46574716\",\n        \"lat\": \"-23584852\",\n        \"setcens\": \"355030893000035\",\n        \"areap\": \"3550308005042\",\n        \"coddist\": \"95\",\n        \"distrito\": \"VILA PRUDENTE\",\n        \"codsubpref\": \"29\",\n        \"subprefe\": \"VILA PRUDENTE\",\n        \"regiao5\": \"Leste\",\n        \"regiao8\": \"Leste 1\",\n        \"nomefeira\": \"PRACA SANTA HELENA\",\n        \"registro\": \"4045-2\",\n        \"logradouro\": \"RUA JOSE DOS REIS\",\n        \"numero\": \"909.000000\",\n        \"bairro\": \"VL ZELINA\",\n        \"referencia\": \"RUA OLIVEIRA GOUVEIA\"\n    }\n]\n\n```\n\n##### Response sem resultado:\n\n``` json\nSTATUS_CODE: 200 OK\n{\n    \"codigo\": 200,\n    \"mensagem\": \"Nenhuma feira encontrada\"\n}\n\n```\n\n##### Response ERRO - Campo de busca inválido:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Campo inválido para busca de feiras\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastra Feira",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"long\": \"-46550164\",\r\n        \"lat\": \"-23558733\",\r\n        \"setcens\": \"355030885000091\",\r\n        \"areap\": \"3550308005040\",\r\n        \"coddist\": \"87\",\r\n        \"distrito\": \"VILA FORMOSA\",\r\n        \"codsubpref\": \"26\",\r\n        \"subprefe\": \"ARICANDUVA-FORMOSA-CARRAO\",\r\n        \"regiao5\": \"Leste\",\r\n        \"regiao8\": \"Leste 1\",\r\n        \"nomefeira\": \"VILA FORMOSA\",\r\n        \"registro\": \"4041-0\",\r\n        \"logradouro\": \"RUA MARAGOJIPE\",\r\n        \"numero\": \"S/N\",\r\n        \"bairro\": \"VL FORMOSA\",\r\n        \"referencia\": \"TV RUA PRETORIA\"\r\n    },\r\n    {\r\n        \"long\": \"-46574716\",\r\n        \"lat\": \"-23584852\",\r\n        \"setcens\": \"355030893000035\",\r\n        \"areap\": \"3550308005042\",\r\n        \"coddist\": \"95\",\r\n        \"distrito\": \"VILA PRUDENTE\",\r\n        \"codsubpref\": \"29\",\r\n        \"subprefe\": \"VILA PRUDENTE\",\r\n        \"regiao5\": \"Leste\",\r\n        \"regiao8\": \"Leste 1\",\r\n        \"nomefeira\": \"PRACA SANTA HELENA\",\r\n        \"registro\": \"4045-2\",\r\n        \"logradouro\": \"RUA JOSE DOS REIS\",\r\n        \"numero\": \"909.000000\",\r\n        \"bairro\": \"VL ZELINA\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/Projeto_API/api/feiras",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Projeto_API",
+						"api",
+						"feiras"
+					]
+				},
+				"description": "> **OBSERVAÇÃO:** É POSSÍVEL CADASTRAR MAIS QUE UMA FEIRA EM UMA REQUISIÇÃO.\n\n\n##### Response Sucesso:\n\n``` json\nSTATUS_CODE: 201 Created\n{\n    \"codigo\": 201,\n    \"mensagem\": \"Feira cadastrada com sucesso\"\n}\n\n```\n\n##### Response ERRO - Validação dos campos:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 10104,\n    \"mensagem\": \"O campo AREAP é obrigatório\"\n}\n\n```\n\n##### Response ERRO - Request Inválido:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Request Inválido\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Feira",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"long\": \"-46550164\",\r\n    \"lat\": \"-23558733\",\r\n    \"setcens\": \"355030885000091\",\r\n    \"areap\": \"3550308005040\",\r\n    \"coddist\": \"87\",\r\n    \"distrito\": \"VILA FORMOSA\",\r\n    \"codsubpref\": \"26\",\r\n    \"subprefe\": \"ARICANDUVA-FORMOSA-CARRAO\",\r\n    \"regiao5\": \"Leste\",\r\n    \"regiao8\": \"Leste 1\",\r\n    \"nomefeira\": \"VILA FORMOSA\",\r\n    \"registro\": \"4041-0\",\r\n    \"logradouro\": \"RUA MARAGOJIPE\",\r\n    \"numero\": \"S/N\",\r\n    \"bairro\": \"VL FORMOSA\",\r\n    \"referencia\": \"TV RUA PRETORIA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/Projeto_API/api/feiras?id=3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Projeto_API",
+						"api",
+						"feiras"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				},
+				"description": "##### Response Sucesso:\n\n``` json\nSTATUS_CODE: 200 OK\n{\n    \"codigo\": 200,\n    \"mensagem\": \"Feira atualizada com sucesso\"\n}\n\n```\n\n##### Response ERRO - Validação dos campos:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 10104,\n    \"mensagem\": \"O campo AREAP é obrigatório\"\n}\n```\n\n##### Response ERRO - Request Inválido:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Request Inválido\"\n}\n\n```\n\n##### Response ERRO - Feira não Encontrada:\n\n``` json\nSTATUS_CODE: 404 Not Found\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Feira não encontrada\"\n}\n\n```\n\n##### Response ERRO - ID não informado:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 999,\n    \"mensagem\": \"É necessário informar um ID no endpoint para atualizar uma feira\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Exclui Feira",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost/Projeto_API/api/feiras?id=2",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Projeto_API",
+						"api",
+						"feiras"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				},
+				"description": "##### Response Sucesso:\n\n``` json\nSTATUS_CODE: 200 OK\n{\n    \"codigo\": 200,\n    \"mensagem\": \"Feira excluída com sucesso\"\n}\n\n```\n\n##### Response ERRO - Feira não encontrada:\n\n``` json\nSTATUS_CODE: 404 Not Found\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Feira não encontrada\"\n}\n\n```\n\n##### Response ERRO - ID não informado:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 999,\n    \"mensagem\": \"É necessário informar um ID no endpoint para atualizar uma feira\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Processa Arquivo",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "arquivo",
+							"type": "file",
+							"src": "/C:/Users/andre.reginatto/Downloads/DEINFO_AB_FEIRASLIVRES_2014.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Projeto_API/api/processa_arquivo",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Projeto_API",
+						"api",
+						"processa_arquivo"
+					]
+				},
+				"description": "Caso seja enviado algum request diferente do suportado (POST) a API irá retornar o seguinte erro:\n\n``` json\nSTATUS_CODE: 405 Method Not Allowed\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Método não suportado\"\n}\n\n```\n\n##### Response Sucesso:\n\n``` json\nSTATUS_CODE: 201 Created\n{\n    \"codigo\": 201,\n    \"mensagem\": \"Arquivo processado com sucesso\"\n}\n\n```\n\n##### Response ERRO - Quantidade inválida de colunas no arquivo:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 400,\n    \"mensagem\": \"O número de colunas deve ser igual a 16 ou 17\"\n}\n\n```\n\n##### Response ERRO - ID já cadastrado:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 400,\n    \"mensagem\": \"O ID xx já está sendo utilizado\"\n}\n\n```\n\n##### Response ERRO - Request Inválido:\n\n``` json\nSTATUS_CODE: 400 Bad Request\n{\n    \"codigo\": 999,\n    \"mensagem\": \"Request Inválido\"\n}\n\n```"
+			},
+			"response": []
+		}
+	]
+}
